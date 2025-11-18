@@ -1,0 +1,23 @@
+IMG_NAME=raspios_lite
+
+# Architecture (Pi 5 requires 64-bit)
+export ARCH='arm64'
+
+# Target hostname
+TARGET_HOSTNAME='watne'
+
+# First user
+FIRST_USER_NAME='pi'
+FIRST_USER_PASS='raspberry'
+
+# Enable SSH by default
+ENABLE_SSH=1
+
+# Locale settings
+TIMEZONE_DEFAULT='America/Toronto'  # Change to your timezone
+KEYBOARD_KEYMAP='us'
+KEYBOARD_LAYOUT='English (US)'
+WPA_COUNTRY='ca'
+
+# Skip stages 3, 4, 5 (desktop/full systems)
+STAGE_LIST="stage0 stage1 stage2"
