@@ -1,4 +1,4 @@
-IMG_NAME=raspios_lite
+IMG_NAME=watne_raspios_lite
 
 # Architecture (Pi 5 requires 64-bit)
 export ARCH='arm64'
@@ -7,8 +7,8 @@ export ARCH='arm64'
 TARGET_HOSTNAME='watne'
 
 # First user
-FIRST_USER_NAME='pi'
-FIRST_USER_PASS='raspberry'
+FIRST_USER_NAME='keanu'
+FIRST_USER_PASS='keanu'
 
 # Enable SSH by default
 ENABLE_SSH=1
@@ -20,4 +20,22 @@ KEYBOARD_LAYOUT='English (US)'
 WPA_COUNTRY='ca'
 
 # Skip stages 3, 4, 5 (desktop/full systems)
-STAGE_LIST="stage0 stage1 stage2"
+STAGE_LIST="stage0 stage1 stage2 stage-rt-kernel stage-navio2-realsense"
+
+export RPI_MODEL=4
+# Deployment directory
+#DEPLOY_DIR='./deploy'
+
+# Work directory (can be large - ensure enough disk space)
+#WORK_DIR='./work'
+
+# Enable compression for final image
+DEPLOY_COMPRESSION='xz'
+
+RELEASE='bookworm'
+
+echo "Pi-gen config loaded:"
+echo "  Image: ${IMG_NAME}"
+echo "  Arch: ${ARCH}"
+echo "  Release: ${RELEASE}"
+echo "  Stages: ${STAGE_LIST}"
