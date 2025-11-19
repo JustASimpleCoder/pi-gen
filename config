@@ -32,7 +32,7 @@ export RPI_MODEL=4
 # Enable compression for final image
 DEPLOY_COMPRESSION='xz'
 
-RELEASE='bookworm'
+RELEASE='trixie'
 
 echo "Pi-gen config loaded:"
 echo "  Image: ${IMG_NAME}"
