@@ -30,7 +30,7 @@ export RPI_MODEL=4
 #WORK_DIR='./work'
 
 # Enable compression for final image
-DEPLOY_COMPRESSION='xz'
+DEPLOY_COMPRESSION='zip'
 
 RELEASE='trixie'
 

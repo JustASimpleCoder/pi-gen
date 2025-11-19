@@ -3,7 +3,7 @@
 # Install RCIO DKMS module for Navio2
 # This handles PWM output, RC input, and LED control
 
-on_chroot <<EOF
+#on_chroot <<EOF
 set -e
 
 # Clone RCIO DKMS repository

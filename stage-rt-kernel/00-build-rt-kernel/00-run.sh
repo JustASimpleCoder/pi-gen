@@ -19,8 +19,8 @@ cd "${RT_BUILD_DIR}"
 
 # Clone Raspberry Pi kernel (use 6.6 LTS branch for stability)
 if [ ! -d linux ]; then
-    echo "Cloning Raspberry Pi kernel (rpi-6.6.y)..."
-    git clone --depth=1 --branch rpi-6.6.y https://github.com/raspberrypi/linux.git
+    echo "Cloning Raspberry Pi kernel (rpi-6.1.y)..."
+    git clone --depth=1 --branch rpi-6.1.y https://github.com/raspberrypi/linux.git
 fi
 
 cd linux
