@@ -1,15 +1,26 @@
 #!/bin/bash -e
 
-# Configure boot overlays for Navio2
-# This runs during image build, not on first boot
+# Run inside chroot
+on_chroot << EOF
+set -e
 
-CFG="${ROOTFS_DIR}/boot/firmware/config.txt"
+# Paths inside chroot
+CFG="/boot/firmware/config.txt"
 
-# Backup config.txt
-cp -n "$CFG" "${CFG}.backup" || true
+# Ensure boot firmware directory exists
+mkdir -p /boot/firmware
 
-# Add Navio2 required overlays
-cat >> "$CFG" <<'EOF'
+# Create config.txt if missing
+if [ ! -f "$CFG" ]; then
+    echo "Warning: config.txt not found, creating new one"
+    touch "$CFG"
+fi
+
+# Backup config
+cp -n "$CFG" "${CFG}.backup" 2>/dev/null || true
+
+# Append Navio2 configuration
+cat >> "$CFG" << 'EOCFG'
 
 # Navio2 Configuration
 dtoverlay=spi0-4cs
@@ -23,12 +34,16 @@ dtoverlay=navio-rgb
 
 # Enable UART for GPS/Telemetry
 enable_uart=1
-EOF
+EOCFG
 
-# Enable kernel modules at boot
-cat >> "${ROOTFS_DIR}/etc/modules" <<'EOF'
+# Ensure /etc/modules exists
+touch /etc/modules
+
+# Add modules
+cat >> /etc/modules << 'EOMOD'
 i2c-dev
 spidev
-EOF
+EOMOD
 
 echo "Navio2 boot configuration complete"
+EOF

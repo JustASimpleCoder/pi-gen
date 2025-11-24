@@ -1,0 +1,7 @@
+
+NOOBS_NAME="Raspbian Lite"
+NOOBS_DESCRIPTION="A port of Debian with no desktop environment"
+
+# if [ "${USE_QEMU}" = "1" ]; then
+# 	export NOOBS_NAME="${NOOBS_NAME}-qemu"
+# fi
